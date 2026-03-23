@@ -9,14 +9,10 @@ const PORT = 3000;
 
 // 4. Middleware para JSON
 app.use(express.json());
-
-// --- BANCO DE DADOS EM MEMÓRIA (Simulação da Aula 06) ---
 let bancoDeCarros = [
     { id: 1, modelo: "Civic", marca: "Honda", ano: 2022, cor: "Prata", preco: 120000 },
     { id: 2, modelo: "Corolla", marca: "Toyota", ano: 2023, cor: "Branco", preco: 150000 }
 ];
-
-// --- ENDPOINTS ---
 
 // 5. GET - Listar todos os carros (Aula 03)
 app.get('/carros', (req, res) => {
@@ -34,16 +30,14 @@ app.get('/carros/:id', (req, res) => {
     res.status(200).json(carro);
 });
 
-// 7. POST - Cadastrar novo carro com VALIDAÇÕES COMPLETAS (Aula 04)
+// 7. POST - Cadastrar novo carro com validações
 app.post('/carros', (req, res) => {
     const { modelo, marca, ano, cor, preco } = req.body;
 
-    // Validações de campos obrigatórios
     if (!modelo || !marca || !ano || !cor || !preco) {
         return res.status(400).json({ erro: "Todos os campos (modelo, marca, ano, cor, preco) são obrigatórios." });
     }
 
-    // Validação de tipo e lógica (Aula 05)
     if (typeof preco !== 'number' || preco <= 0) {
         return res.status(400).json({ erro: "O preço deve ser um número positivo." });
     }
@@ -53,7 +47,6 @@ app.post('/carros', (req, res) => {
         return res.status(400).json({ erro: "Ano inválido." });
     }
 
-    // Criação do objeto
     const novoCarro = {
         id: bancoDeCarros.length + 1,
         modelo,
@@ -70,7 +63,7 @@ app.post('/carros', (req, res) => {
     });
 });
 
-// 8. DELETE - Remover carro (Aula 05)
+// 8. DELETE - Remover carro
 app.delete('/carros/:id', (req, res) => {
     const { id } = req.params;
     const indice = bancoDeCarros.findIndex(c => c.id === parseInt(id));
