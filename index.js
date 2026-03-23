@@ -14,12 +14,12 @@ let bancoDeCarros = [
     { id: 2, modelo: "Corolla", marca: "Toyota", ano: 2023, cor: "Branco", preco: 150000 }
 ];
 
-// 5. GET - Listar todos os carros (Aula 03)
+// 5. GET - Listar todos os carros
 app.get('/carros', (req, res) => {
     res.status(200).json(bancoDeCarros);
 });
 
-// 6. GET - Buscar carro por ID (Aula 03)
+// 6. GET - Buscar carro por ID
 app.get('/carros/:id', (req, res) => {
     const { id } = req.params;
     const carro = bancoDeCarros.find(c => c.id === parseInt(id));
