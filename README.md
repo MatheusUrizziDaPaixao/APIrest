@@ -67,7 +67,7 @@ Para cumprir o requisito de criar pelo menos 5 recursos, utilize os seguintes co
 { "modelo": "HB20", "marca": "Hyundai", "ano": 2024, "cor": "Cinza", "preco": 92000 }
 { "modelo": "Mustang", "marca": "Ford", "ano": 2022, "cor": "Vermelho", "preco": 450000 }
 
-Capturas de Tela dos Testes na pasta Prints
+Capturas de Tela dos Testes na pasta Prints;
 Print do POST com sucesso (Status 201):
 
 Print do GET trazendo a lista de 5 carros:
